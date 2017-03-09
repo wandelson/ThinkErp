@@ -1,147 +1,32 @@
-Aplicação Web Api, testes de integração e continuos integration docker e build automaticos com circleci
+Template do projeto Think.Erp
 
+Requerimento VS 2017
 
-Instalar o node JS
-https://nodejs.org/en/
+Docker Imagem SQL SERVER
 
-Instalar o .net core 1.1 (somente)
-https://www.asp.net/core
+docker comandos
+ 
+docker -v 
 
+docker images
 
-Preparação do ambiente.
+Conteiner ativo
+docker ps
 
-1)Instalar visual studio code.
-https://code.visualstudio.com/download
+Conteiner instanciado
+docker ps -a
 
+Depois rodar SQL com as credenciais
 
+docker run -p 1433:1433 -e SA_PASSWORD=Workshop@123  -e ACCEPT_EULA=Y  microsoft/mssql-server-linux
 
-2)Instalar npm yeoman e bower
+docker logs
 
-npm install -g npm
+Baixar imagem
 
-npm install -g yo bower
+docker pull microsoft/mssql-server-linux
 
+parar imagem
+docker ps stop 3c
 
-3) Visualizar versão instalação
-
-npm -v
-node -v
-
-
-4) Instalar gerador de template aspnet 
-
-npm i -g generator-aspnet
-
-
-Criação do projeto
-
-1)Criar pasta 
-
-mkdir src
-
-2)Dentro da pasta SRC .. cd src
-
-yo aspnet 
-
-cd "Crud"
-dotnet restore
-dotnet build 
-
-Alterar connectionString
-
-http://www.developerfusion.com/tools/sql-connection-string/
-
-dotnet ef database update (to create the SQLite database for the project)
-dotnet run
-
-
-
-Criar Controller.
-
-Criar View.
-
-Configurar Rota padrão.
-
-
-https://wandelsonbezer.wixsite.com/netcore
-
-
-
-Debug no Windows Vs Code
-
-  "buildOptions": {
-    "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-     "debugType": "portable"
-  },
-
-
-
-Bower.
-
-bower init
-
-bower install bootstrap --save
-
-
-
-CTRL + shift + p  =  usar extensao VS CODE 
-
-CTRL + shift + e =  executa sql
-
-migrations
-
-
-Install package EntityFramewrokCore
-Install package EntityFrameworkCore.Tools - pre
-
-get-help EntityFrameworkCore
-
-get-help add-migration
-
-Adiciona migração 
-
-dotnet ef migrations add MigracaoInicial
-
-Remove a última migração
-
-dotnet ef migrations remove 
-
-executar migration 
-
-dotnet ef database update
-
-
-Script-Migration gera o sql da migração muito bom uso em produção.
-
-
-update-database -verbose ambiente de homologação
-
-
-
-
-
-
-dotnet ef dbcontext scaffold "Data Source=thinkerp.cf5cl9qlwhk1.sa-east-1.rds.amazonaws.com;Initial Catalog=API;User ID=thinkerpuser; Password=ZWDLEBTO; MultipleActiveResultSets=true" Microsoft.EntityFrameworkCore.SqlServer -f -o Models  -t dbo.cities 
-
-
-
-Erro de dominio não é uma excessão.
-
-Regra de negocio é notificação..
-
-Exception erro não esperado.
-
-
-xunit
-
-Teste de integração não rodar testes em paralelo.
-
-Testes de unidade podemos rodar testes em paralelo.
-
-
-Asp.net core TestHost
-
-substitui a necessidade de um host real para testes de integração.
-
-TestServer automatiza sempre entregar codigo de qualidade substitui o postman.
+"DefaultConnection": "Data Source=localhost;Initial Catalog=workshop; MultipleActiveResultSets=true; Integrated Security=True"
